@@ -1,5 +1,6 @@
-Höjd (cm),Massa (g)
-12,9
-13,11
-15,12
-17,13
+Utdata,,,Indata
+Höjd (cm),Massa (g),,Solljustimmar (h)
+12,9,,7
+13,11,,8
+15,12,,8
+17,13,,5
