@@ -19,8 +19,8 @@ with open('data.csv', 'r') as csvfile:
         #Anta inte att det heter indata eller utdata ska kunna vara vad som ksk.
         indata_index = row.index("Indata")
         utdata_index = row.index("Utdata")
-        print(indata_index)
-        print(utdata_index)
+        # print(indata_index)
+        # print(utdata_index)
         break
 
     # for row in csvreader:
@@ -30,19 +30,27 @@ with open('data.csv', 'r') as csvfile:
 
     # fields = next(csvreader)
     data_titlar = next(csvreader)
-    print(data_titlar[0])
-
-    # array = ["hej", "hej"]
-    num = 1
+    # print(data_titlar[0])
+    
+    # max_index = len(data_titlar) - 1
+    line = 1
     for row in csvreader:
         # Hitta skillnad i index, 2 emellan betyder att det är slut
         # if utdata_index - indata_index == 2:
-            # print(num, "Indata:", )
+            # print(line, "Indata:", )
         # elif utdata_index - indata_index > 2:
-        for i in range(indata_index, utdata_index+1):
-            print(data_titlar)
-        # print(num, "Indata:", )
-        num +=1
+        index_skillnad = utdata_index - indata_index - 1
+        # for i in range(indata_index, utdata_index+1):
+            # print(data_titlar)
+        print(str(line) + ".", "\n" + "Indata:",)
+        for i in range(indata_index, utdata_index-1):
+            print(data_titlar[i] + ":", row[i])
+        print("Utdata:")
+        for i in range(utdata_index, len(data_titlar)):
+            print(data_titlar[i] + ":", row[i])
+        print("\n")
+        # print("Summan av", title + ":", sum / len(data)) #Skriv "Summan av <vad datan är>:", få det ifrån csv
+        line += 1
 
     # for row in csvreader:
         # if csvreader.in
