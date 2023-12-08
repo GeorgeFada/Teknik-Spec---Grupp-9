@@ -1,15 +1,15 @@
 import csv
+import tkinter
 
 fields = []
 rows = []
 data = []
+
 sum = 0
-title = ""
 
 with open('data.csv', 'r') as csvfile:
     csvreader = csv.reader(csvfile)
 
-    # title = csvreader[0]
     fields = next(csvreader)
     fields = next(csvreader)
 
@@ -22,3 +22,7 @@ for item in data:
     sum += item
 
 print("Summan av:", sum / len(data)) #Skriv "Summan av <vad datan är>:", få det ifrån csv
+
+DA = tkinter.Tk()
+
+DA.mainloop()
