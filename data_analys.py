@@ -6,15 +6,25 @@ parser = argparse.ArgumentParser()
 parser.add_argument("filename", nargs='?', help="the source csv file containing the data")
 args = parser.parse_args()
 
-# with open('data2.csv', 'r') as csvfile:
+def check_extension(filename):
+    filename_extension = os.path.splitext(filename)[1]
+    if filename_extension != ".csv":
+        print("The file", "\"" + filename + "\"", "is not a csv file.")
+        parser.print_help()
+        exit()
+
 if args.filename:
+    #todo kolla om extension är .csv
     if not os.path.exists(args.filename): #Om inte hittar fil:
+        print("Could not open", "\"" + os.path.basename(args.filename) + "\"" + ", no such file or directory.")
         parser.print_help()
         exit()
     else:
+        check_extension(os.path.basename(args.filename))
         csv_file = args.filename
 else:
     pass
+    exit("Drag")
     #HÄR KÖRS DRAG AND DROP
     #csv_file = file
 
