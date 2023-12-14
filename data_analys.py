@@ -1,5 +1,6 @@
 import csv
-import tkinter
+from tkinter import *
+import tkinterdnd2 as tkdnd
 
 fields = []
 rows = []
@@ -23,6 +24,27 @@ for item in data:
 
 print("Summan av:", sum / len(data)) #Skriv "Summan av <vad datan är>:", få det ifrån csv
 
-DA = tkinter.Tk()
 
-DA.mainloop()
+
+def csv_dnd():
+    def show_text(event):
+        textarea.delete("1.0","end")
+        textarea.insert("end",f"{event.data}\n")
+        return event.data
+
+    root=tkdnd.Tk()
+    root.title("CSV DnD")
+    root.geometry('400x300')
+
+    frame= Frame(root)
+    frame.pack()
+
+    textarea=Text(frame, height=30, width=40)
+    textarea.pack(side=LEFT)
+
+    textarea.drop_target_register(tkdnd.DND_FILES)
+    textarea.dnd_bind('<<DROP>>', show_text)
+
+    root.mainloop()
+
+csv_dnd()
