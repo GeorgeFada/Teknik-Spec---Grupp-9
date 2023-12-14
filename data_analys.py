@@ -1,12 +1,32 @@
 import csv
+import argparse
+import os.path
 
-with open('data.csv', 'r') as csvfile:
+parser = argparse.ArgumentParser()
+parser.add_argument("filename", nargs='?', help="the source csv file containing the data")
+args = parser.parse_args()
+
+# with open('data2.csv', 'r') as csvfile:
+if args.filename:
+    if not os.path.exists(args.filename): #Om inte hittar fil:
+        parser.print_help()
+        exit()
+    else:
+        csv_file = args.filename
+else:
+    pass
+    #HÄR KÖRS DRAG AND DROP
+    #csv_file = file
+
+with open(csv_file, 'r') as csvfile:
     csvreader = csv.reader(csvfile)
 
     indata_index = 0 
     utdata_index = 0 
 
     #Spara indexer för var indatan respektive utdatan börjar
+    # print(csvreader)
+    # exit()
     for row in csvreader:
         #ksk ta bort extra kolumner emellan Indata och utdata som inte behövs.
         #Anta inte att det heter indata eller utdata ska kunna vara vad som ksk.
@@ -38,13 +58,15 @@ with open('data.csv', 'r') as csvfile:
             data_dict["Utdata"][num][1].append(row[i])
             num += 1
     # print(data_dict)
+    # exit()
 
     #Printa ut för varje rad i csv filen de olika kolumnernas värde, vad för typ av värde, samt om det är indata/utdata
     # <radnummer> Indata: Titel: <värde> (osv), Utdata: Titel:
+    # for i in range(len(data_dict["Utdata"][0][1])):
+    dict_indata = data_dict["Indata"]
+    dict_utdata = data_dict["Utdata"]
     for i in range(len(data_dict["Utdata"][0][1])):
         print(str(i + 1) + ".")
-        dict_indata = data_dict["Indata"]
-        dict_utdata = data_dict["Utdata"]
         print("Indata:")
         for item in dict_indata:
             print(item[0] + ":", item[1][i])

@@ -1,6 +1,6 @@
-Indata,,Utdata,
-Solljustimmar (h),,Höjd (cm),Massa (g)
-7,,12,9
-8,,13,11
-8,,15,12
-5,,17,13
+Indata,,,Utdata
+Solljustimmar (h),Näringslösning (ml),,Höjd (cm),Massa (g)
+7.00,2.23,,12.00,9.00
+8.00,4.9,,13.00,11.00
+8.00,1.7,,15.00,12.00
+5.00,4.3,,17.00,13.00
