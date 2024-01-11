@@ -25,26 +25,26 @@ for item in data:
 print("Summan av:", sum / len(data)) #Skriv "Summan av <vad datan är>:", få det ifrån csv
 
 
+#Replaces the DnD area with a text box of the event data (file path)
+def show_text(event):
+    textarea.delete("1.0","end")
+    textarea.insert("end",f"{event.data}\n")
+    return event.data
 
-def csv_dnd():
-    def show_text(event):
-        textarea.delete("1.0","end")
-        textarea.insert("end",f"{event.data}\n")
-        return event.data
+#Root 
+root=tkdnd.Tk()
+root.title("CSV DnD")
+root.geometry('400x300')
 
-    root=tkdnd.Tk()
-    root.title("CSV DnD")
-    root.geometry('400x300')
+frame = Frame(root)
+frame.pack()
 
-    frame= Frame(root)
-    frame.pack()
+#DnD area
+textarea = Text(frame, height=30, width=40)
+textarea.pack(side=LEFT)
 
-    textarea=Text(frame, height=30, width=40)
-    textarea.pack(side=LEFT)
+textarea.drop_target_register(tkdnd.DND_FILES)
+textarea.dnd_bind('<<DROP>>', show_text)
 
-    textarea.drop_target_register(tkdnd.DND_FILES)
-    textarea.dnd_bind('<<DROP>>', show_text)
-
-    root.mainloop()
-
-csv_dnd()
+#Runs the root
+root.mainloop()
